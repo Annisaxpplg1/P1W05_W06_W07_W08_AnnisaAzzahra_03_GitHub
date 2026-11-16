@@ -132,40 +132,54 @@ if (daftarProyek) {
   pasangFilter("#filter-javascript", "JavaScript");
 }
 
-
 // 5. Repositori GitHub terbaru (halaman Proyek)
 const username = "Annisaxpplg1";
 const alamatRepo = `https://api.github.com/users/${username}/repos`;
-const pilihan = "?sort=updated&per_page=6";
+const pilihan = "?per_page=100";
+
 const daftarRepo = document.querySelector("#daftar-repo");
 const statusRepo = document.querySelector("#status-repo");
 
 async function ambilRepo() {
-statusRepo.textContent = "Memuat...";
-try {
-const response = await fetch(alamatRepo + pilihan);
-if (!response.ok) {
-throw new Error(`Status ${response.status}`);
+  statusRepo.textContent = "Memuat...";
+
+  try {
+    const response = await fetch(alamatRepo + pilihan);
+
+    if (!response.ok) {
+      throw new Error(`Status ${response.status}`);
+    }
+
+    const repos = await response.json();
+
+    repos.sort((a, b) =>
+      b.updated_at.localeCompare(a.updated_at)
+    );
+
+    const enamRepo = repos.slice(0, 6);
+
+    enamRepo.forEach((repo) => {
+      const item = document.createElement("li");
+      const tautan = document.createElement("a");
+
+      tautan.href = repo.html_url;
+      tautan.target = "_blank";
+      tautan.textContent =
+        `${repo.name} (${repo.language || "tanpa bahasa"}, ${repo.stargazers_count} bintang)`;
+
+      item.appendChild(tautan);
+      daftarRepo.appendChild(item);
+    });
+
+    statusRepo.textContent = `${enamRepo.length} repositori yang terakhir diperbarui:`;
+
+  } catch (error) {
+    statusRepo.textContent =
+      "Maaf, daftar repositori gagal dimuat. Periksa username atau coba lagi nanti.";
+    console.error(error);
+  }
 }
 
-const repos = await response.json();
-repos.forEach((repo) => {
-const item = document.createElement("li");
-const tautan = document.createElement("a");
-tautan.href = repo.html_url;
-tautan.target = "_blank";
-tautan.textContent = repo.name;
-item.appendChild(tautan);
-daftarRepo.appendChild(item);
-});
-
-statusRepo.textContent = `${repos.length} repositori yang
-terakhir diperbarui:`;
-} catch (error) {
-statusRepo.textContent = "Maaf, daftar repositori gagal dimuat. Periksa username atau coba lagi nanti.";
-console.error(error);
-}
-}
 if (daftarRepo) {
   ambilRepo();
 }
