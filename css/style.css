@@ -380,8 +380,16 @@ body.gelap {
 --warna-teks-footer: #E3E8EE;
 }
 
-/* Tambahan CSS untuk form tambah keahlian*/
-
-.tambah-skill {
-  margin-top: 1px;
+/* Pesan form tambah keahlian */
+#pesan-skill {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+/* Mengatur ukuran semua gambar di dalam kartu proyek agar seragam */
+.kartu img {
+  width: 100%;          /* Lebar memenuhi kartu */
+  height: 160px;        /* Tinggi disamakan rata (misal 160px, bisa diubah sesuai selera) */
+  object-fit: cover;    /* Supaya gambar dipotong otomatis dengan pas tanpa gepeng */
+  border-radius: 6px;   /* Membuat sudut gambar sedikit melengkung rapi */
+  margin-bottom: 10px;  /* Jarak antara gambar dan teks di bawahnya */
 }

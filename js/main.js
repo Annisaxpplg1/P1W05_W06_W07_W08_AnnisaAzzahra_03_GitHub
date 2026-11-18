@@ -23,9 +23,7 @@ jumlahSkill.textContent = "Daftar keahlian gagal dimuat.";
 console.error(error);
 }
 }
-if (daftarSkill) {
-muatKeahlian();
-}
+const pemuatanKeahlian = daftarSkill ? muatKeahlian() : Promise.resolve();
 
 // 2. Tema gelap (semua halaman)
 const tombolTema = document.querySelector("#tombol-tema");
@@ -183,28 +181,37 @@ async function ambilRepo() {
 if (daftarRepo) {
   ambilRepo();
 }
+// Form keahlian baru
+const formSkill = document.querySelector("#form-skill");
 
-//Tambah keahlian baru (halaman Beranda)
-const skillBaruInput = document.querySelector("#skill-baru");
-const levelBaruInput = document.querySelector("#level-baru");
-const tambahSkillButton = document.querySelector("#tambah-skill");
+if (formSkill) {
+  const inputSkill = formSkill.querySelector("#skill-baru");
+  const inputLevel = formSkill.querySelector("#level-baru");
+  const pesanSkill = document.querySelector("#pesan-skill");
 
-const pesanSkill = document.querySelector("#pesan-skill");
-"nama keahlian wajib diisi, dan level keahlian juga harus dipilih."
-tambahSkillButton.addEventListener("click", () => {
-  const skillBaru = skillBaruInput.value.trim();
-  const levelBaru = levelBaruInput.value;
+  formSkill.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  if (!skillBaru) {
-    pesanSkill.textContent = "Nama keahlian wajib diisi.";
-    return;
-  }
+    const namaSkill = inputSkill.value.trim();
+    const levelSkill = inputLevel.value;
 
-  if (!levelBaru) {
-    pesanSkill.textContent = "Level keahlian wajib dipilih.";
-    return;
-  }
+    if (!namaSkill || !levelSkill) {
+      pesanSkill.textContent = "Daftar keahlian wajib diisi";
+      return;
+    }
 
-  pesanSkill.textContent = "";
-});
+    await pemuatanKeahlian;
 
+    const item = document.createElement("li");
+    item.textContent = `${namaSkill} (${inputLevel.selectedOptions[0].textContent})`;
+    daftarSkill.appendChild(item);
+
+    const jumlahSaatIni = daftarSkill.querySelectorAll("li").length;
+    jumlahSkill.textContent =
+      `Ada ${jumlahSaatIni} keahlian yang sedang saya kembangkan.`;
+
+    pesanSkill.textContent = "Daftar keahlian berhasil ditambahkan";
+
+    formSkill.reset();
+  });
+}

@@ -11,13 +11,12 @@
   <script src="js/main.js" defer></script>
   <script src="js/logika.js" defer></script> <!-- IGNORE -->
   <script src="js/kalkulator.js" defer></script> <!-- IGNORE -->
-
 </head>
 <body>
   <header>
-  <div class="container navbar">
+    <div class="container navbar">
       <h1>Annisa Azzahra</h1>
-      <nav class ="menu-laptop">
+      <nav class="menu-laptop">
         <ul>
           <li><a href="index.html">Beranda</a></li>
           <li><a href="proyek.html">Proyek</a></li>
@@ -37,7 +36,6 @@
             <li><a href="kontak.html">Kontak</a></li>
           </ul>
         </nav>
-
       </details>
     </div>
   </header>
@@ -80,27 +78,31 @@
 
         <section class="kartu">
           <h2>Keahlian</h2>
-        <ul id="daftar-skill"></ul>
-        <p id="jumlah-skill"></p>
-        
-        <div class="tambah-skill">
-          <p>
-            <label for="Keahlian-baru">Keahlian baru</label><br>
-            <input type="text" id="skill-baru" placeholder="Contoh: Figma" required>
 
-          <p>
-            <label for="level-baru">Level</label><br>
-            <select id="level-baru" name="level" required>
-              <option value="">-- Pilih level --</option>
-              <option value="pemula">Dasar</option>
-              <option value="menengah">Menengah</option>
-              <option value="lanjutan">Mahir</option>
-            </select>
-          </p>
+          <ul id="daftar-skill"></ul>
+          <p id="jumlah-skill"></p>
 
-          <button type="button" id="tombol-skill">Level</button>
+          <form id="form-skill" class="tambah-skill" novalidate>
+            <p>
+              <label for="skill-baru">Keahlian baru</label><br>
+              <input type="text" id="skill-baru" name="skill" placeholder="Contoh: Figma">
+            </p>
 
+            <p>
+              <label for="level-baru">Level</label><br>
+              <select id="level-baru" name="level">
+                <option value="">-- Pilih level --</option>
+                <option value="dasar">Dasar</option>
+                <option value="menengah">Menengah</option>
+                <option value="mahir">Mahir</option>
+              </select>
+            </p>
+
+            <button type="submit">Tambah Keahlian</button>
+<p id="pesan-skill" aria-live="polite">Daftar keahlian wajib diisi</p>
+          </form>
         </section>
+      </div>
 
       <section class="kartu">
         <h2>Jadwal Belajar</h2>
@@ -137,8 +139,8 @@
 
   <footer>
     <p>Kontak: <a href="mailto:nisaarplx@gmail.com">nisaarplx@gmail.com</a> |
-  <a href="https://github.com/Annisaxpplg1" target="_blank">GitHub</a> |
-  <a href="https://www.youtube.com/@AnnisaRPL" target="_blank">YouTube</a></p>
+      <a href="https://github.com/Annisaxpplg1" target="_blank">GitHub</a> |
+      <a href="https://www.youtube.com/@AnnisaRPL" target="_blank">YouTube</a></p>
     <p>&copy; 2026 Annisa Azzahra. Dibuat di Kelas Industri UBIG.</p>
   </footer>
 </body>

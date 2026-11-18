@@ -3,7 +3,6 @@
 // TUGAS LOGIKA JAVASCRIPT MINGGU 06
 // ==========================================
 
-
 // 1. Fungsi Ganjil atau Genap
 function ganjilGenap(angka) {
     if (angka % 2 === 0) {
@@ -19,7 +18,6 @@ console.log("Angka 7:", ganjilGenap(7));
 console.log("Angka 12:", ganjilGenap(12));
 console.log("Angka 0:", ganjilGenap(0));
 
-
 // 2. Fungsi Celsius ke Fahrenheit
 const celsiusKeFahrenheit = (celsius) => {
     return celsius * 9 / 5 + 32;
@@ -30,7 +28,6 @@ console.log("=== 2. CELSIUS KE FAHRENHEIT ===");
 console.log("0 Celsius:", celsiusKeFahrenheit(0));
 console.log("100 Celsius:", celsiusKeFahrenheit(100));
 console.log("-40 Celsius:", celsiusKeFahrenheit(-40));
-
 
 // 3. Fungsi Mencari Nilai Terbesar
 function nilaiTerbesar(a, b, c) {
