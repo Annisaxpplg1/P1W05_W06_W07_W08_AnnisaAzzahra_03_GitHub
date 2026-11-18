@@ -183,3 +183,28 @@ async function ambilRepo() {
 if (daftarRepo) {
   ambilRepo();
 }
+
+//Tambah keahlian baru (halaman Beranda)
+const skillBaruInput = document.querySelector("#skill-baru");
+const levelBaruInput = document.querySelector("#level-baru");
+const tambahSkillButton = document.querySelector("#tambah-skill");
+
+const pesanSkill = document.querySelector("#pesan-skill");
+"nama keahlian wajib diisi, dan level keahlian juga harus dipilih."
+tambahSkillButton.addEventListener("click", () => {
+  const skillBaru = skillBaruInput.value.trim();
+  const levelBaru = levelBaruInput.value;
+
+  if (!skillBaru) {
+    pesanSkill.textContent = "Nama keahlian wajib diisi.";
+    return;
+  }
+
+  if (!levelBaru) {
+    pesanSkill.textContent = "Level keahlian wajib dipilih.";
+    return;
+  }
+
+  pesanSkill.textContent = "";
+});
+

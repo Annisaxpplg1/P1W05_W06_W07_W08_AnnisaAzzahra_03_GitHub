@@ -379,3 +379,9 @@ body.gelap {
 --warna-garis: #34465A;
 --warna-teks-footer: #E3E8EE;
 }
+
+/* Tambahan CSS untuk form tambah keahlian*/
+
+.tambah-skill {
+  margin-top: 1px;
+}
